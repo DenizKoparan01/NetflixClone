@@ -2,22 +2,31 @@ import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import requests from "./requests";
 import "./row.css";
+import { useFetchData } from "./utils/hooks";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 function Row({ title, fetchUrl, largeRow }) {
-  const [movies, setMovies] = useState([]);
+  // bir diğer yöntem de custom hook oluşturup mümkün olduğunca her yerde onu kullanmak, merkezileştirme derken bu da dahil
+  const movies = useFetchData(fetchUrl);
+  // const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
-      return request;
-    }
-    fetchData();
-  }, [fetchUrl]);
+  // bu fonksiyonu dışarı aldım ki ileriki aşamalarda yine bu component içinde aynı fonksiyonu kullanman gerekirse kullanabil diye
+  // const fetchData = async () => {
+  //   const response = await axios.get(fetchUrl);
+  //   if (response.status === 200) {
+  //     return setMovies(response.data.results);
+  //   }
+  // };
 
-  console.log(movies);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [fetchUrl]);
+
+  // ilgili kategoride herhangi bir nedenle veri gelmediği durumda ekranda o kategori gösterilmeyecek
+  if (!movies.length) {
+    return null;
+  }
 
   return (
     <div className="row">
@@ -35,7 +44,7 @@ function Row({ title, fetchUrl, largeRow }) {
                 : movie.backdrop_path
             }`}
             alt={movie.name}
-          ></img>
+          />
         ))}
       </div>
     </div>

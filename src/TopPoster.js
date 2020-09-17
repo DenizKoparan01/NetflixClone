@@ -2,21 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import requests from "./requests";
 import "./TopPoster.css";
+import { useFetchData } from "./utils/hooks";
 
 function TopPoster() {
   const [movie, setMovie] = useState([]);
+  const movies = useFetchData(requests.fetchNetflixOriginals);
 
   useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals);
-      setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ]
-      );
+    if (Array.isArray(movies)) {
+      setMovie(movies[Math.floor(Math.random() * movies.length - 1)]);
     }
-    fetchData();
-  }, []);
+  }, [movies]);
+
   return (
     <header
       className="general"

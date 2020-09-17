@@ -4,6 +4,27 @@ import Row from "./Row";
 import requests from "./requests";
 import TopPoster from "./TopPoster";
 
+/* 
+buradaki row lara bir çare bulmamız gerekiyor, dinamik hale getirmek lazım api documentation ı kurcalamak gerek
+ya da en kötü ihtimalle bir array yapısı oluşturup title ve api yi orada tanımlayabilir sonrasında aşağıda map edebiliriz
+
+const categories = [
+    {
+      title: Trending Now,
+      url: /trending/all/week?`,
+      large: true
+    },
+    {
+      title: Action Movies,
+      url: /discover/movie?with_genres=28
+    }
+    .
+    .
+    .
+    gibi
+  ]
+
+*/
 function App() {
   return (
     <div className="App">
