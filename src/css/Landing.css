@@ -1,0 +1,72 @@
+html {
+  background-color: #141414;
+}
+#logo {
+  width: 120px;
+  height: 80px;
+  top: 0;
+  margin-left: 2em;
+}
+.acc {
+  margin-left: 30em;
+  margin-top: 3em;
+  height: 150px;
+  width: 60%;
+  display: inline-block;
+  justify-content: space-between;
+}
+#profile-pic {
+  margin-left: 1em;
+  height: 130px;
+  width: 130px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: 4px solid #2f2f2f;
+}
+#profile-pic:hover {
+  border: 4px solid white;
+}
+.name {
+  margin-left: 30em;
+  margin-top: 0.5em;
+  height: 50px;
+  width: 50%;
+  display: inline-block;
+  justify-content: space-between;
+}
+h {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2em;
+  color: white;
+  margin-left: 11.5em;
+  font-style: bold;
+}
+p {
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 1em;
+  color: #bec2cb;
+  margin-left: 4em;
+  margin-right: 2.5em;
+  display: inline-block;
+}
+.button1 {
+  margin-top: 3em;
+  margin-left: 45em;
+  height: 35px;
+  width: 180px;
+  background-color: #141414;
+  border: 1px solid grey;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 0.9em;
+  color: grey;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.button1:hover {
+  border: 1px solid white;
+  color: white;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}

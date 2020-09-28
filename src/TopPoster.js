@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import requests from "./requests";
-import "./TopPoster.css";
+import "./css/TopPoster.css";
 import { useFetchData } from "./utils/hooks";
 
 function TopPoster() {
   const [movie, setMovie] = useState([]);
+
   const movies = useFetchData(requests.fetchNetflixOriginals);
 
   useEffect(() => {
@@ -13,7 +14,10 @@ function TopPoster() {
       setMovie(movies[Math.floor(Math.random() * movies.length - 1)]);
     }
   }, [movies]);
-
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    // boyutu için
+  }
   return (
     <header
       className="general"
@@ -29,14 +33,15 @@ function TopPoster() {
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
         {/* title */}
-        <div className="buttons">
-          <button className="button">Play</button>
-          <button className="button">My List</button>
+        <div className="btns">
+          <button className="btn">Play</button>
+          <button className="btn">My List</button>
         </div>
         {/* button 2 */}
-        <h1 className="desc">{movie?.overview}</h1>
+        <h1 className="desc">{truncate(movie?.overview, 150)}</h1>
         {/* descrip. */}
       </div>
+      <div className="Bottom"></div>
     </header>
   );
 }
